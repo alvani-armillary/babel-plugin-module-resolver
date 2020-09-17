@@ -60,7 +60,7 @@ function resolvePathFromAliasConfig(sourcePath, currentFile, opts) {
     return true;
   });
 
-  if ((0, _utils.isRelativePath)(sourcePath)) {
+  if (isRelativePath(sourcePath)) {
     return aliasedSourceFile || sourcePath;
   }
 
