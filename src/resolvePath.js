@@ -60,6 +60,10 @@ function resolvePathFromAliasConfig(sourcePath, currentFile, opts) {
     return true;
   });
 
+  if ((0, _utils.isRelativePath)(sourcePath)) {
+    return aliasedSourceFile || sourcePath;
+  }
+
   if (!aliasedSourceFile) {
     return null;
   }
@@ -83,10 +87,6 @@ const resolvers = [
 ];
 
 export default function resolvePath(sourcePath, currentFile, opts) {
-  if (isRelativePath(sourcePath)) {
-    return sourcePath;
-  }
-
   const normalizedOpts = normalizeOptions(currentFile, opts);
 
   // File param is a relative path from the environment current working directory
